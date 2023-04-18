@@ -1,0 +1,121 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<!-- Hero Section -->
+<header class="row bg-black">
+  <div class="col-md-4">
+    <img src="{% static 'portfolio/profile2.jpg' %}" />
+  </div>
+
+  <div class="col-md-8 my-auto p-4">
+    <h1>I AM <strong>RONNY ROSARIO</strong></h1>
+    <h3>I'm a Python FullStack Developer</h3>
+    <p>I am a passionate software developer with 4+ years of experience as a computer technical. 
+      I have worked with personal projects and the creation of websites and applications, as well as inventory systems. 
+      I adapt to any development environment and I'm always learning new things.</p>
+    <a class="btn btn-primary btn-lg rounded-0 my-3" href="{% static 'portfolio/cv.pdf' %}">Download my CV</a>
+  </div>
+</header>
+
+<!-- Porfolio Section -->
+<div class="row my-4 text-center">
+
+  <h3>MY PROJECTS</h3>
+  <p>Here I show you some of my personal projects throughout my career as a python developer</p>
+
+  {% for project in projects %}
+  <div class="col-md-4 p-4">
+    <div class="card bg-black card-project">
+      <img src="{{project.image.url }}" class="card-img-top" />
+
+      <div class="card-body">
+
+        <h2>{{ project.title }}</h2>
+        <p>{{ project.description }}</p>
+
+        {% if project.url %}
+        <a href="{{project.url}}" class="btn btn-light rounded-0 btn-sm" target="__blank" rel="noreferrer">Visit the
+          Project</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<!-- Footer -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Footer con redes sociales</title>
+	<style>
+		footer {
+			background-color: #000000;
+			padding: 20px;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		.column {
+			flex-basis: 33.33%;
+			text-align: center;
+		}
+
+		.column a {
+			display: block;
+			color: black;
+			margin-bottom: 10px;
+		}
+
+		.column a:hover {
+			text-decoration: underline;
+		}
+
+		.social-media {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; /* Agregado para centrar los iconos */
+}
+
+.social-media img {
+  margin-right: 10px;
+  height: 50px; /* Puedes cambiar el tamaño de los iconos aquí */
+}
+
+	</style>
+</head>
+<body>
+	<footer>
+		<div class="column">
+			<h3>Company</h3>
+			<p>About</p>
+			<p>Blog</p>
+			<p>Contact</p>
+		</div>
+		<div class="column">
+			<h3>Legal</h3>
+			<p>Claim</p>
+			<p>Privacy</p>
+			<p>Terms</p>
+		</div>
+		<div class="column">
+			<h3>REDES SOCIALES</h3>
+			<p>Siguenos en nuestras redes sociales</p>
+			<div class="social-media">
+				<a href="#"><img src="https://cdn.icon-icons.com/icons2/1109/PNG/512/1486053608-facebook_79182.png" alt="facebook"></a>
+				<a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/768px-Instagram_logo_2016.svg.png" alt="Icono de redes sociales"></a>
+				<a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/YouTube_social_white_squircle.svg/2048px-YouTube_social_white_squircle.svg.png" alt="Icono de redes sociales"></a>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>
+
+
+{% endblock %}
